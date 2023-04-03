@@ -55,7 +55,7 @@ def kisi_düzenle():
 
 
 # #### `kisi_sil()`
-
+# Bu fonksiyon, kullanicidan bir kisi adi alarak telefon rehberindeki kisiler listesinde bu kisiyi bulur ve siler.
 def kisi_sil():
     ad = input("Silmek istediğiniz kisinin adini girin: ")
     if ad in telefon_rehberi:
@@ -65,7 +65,7 @@ def kisi_sil():
         print(ad, "kisisi telefon rehberinde bulunamadi.")
 
 
-# Bu fonksiyon, kullanicidan bir kisi adi alarak telefon rehberindeki kisiler listesinde bu kisiyi bulur ve siler.
+
 
 # #### `kisi_arama()`
 # Bu fonksiyon, kullanicidan bir kisi adi alarak telefon rehberindeki kisiler listesinde bu kisiyi bulur ve ekrana görüntüler.
@@ -80,7 +80,7 @@ def kisi_arama():
 
 
 
-
+#Kisinin yapmak istedigi islemi soran ana ekran
 
 while True:
     print("\nTelefon Rehberi Uygulamasi")
