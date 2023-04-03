@@ -1,0 +1,80 @@
+
+def add_contact():
+    contact_name = input("Eklemek istediginiz kisinin;\nAdi:\n")
+    contact_number = input("Numarasi:\n")
+    my_contacts[contact_name] = contact_number
+    print(f"{contact_name} basariyla kaydedildi.")
+
+
+def edit_contact():
+    contact_name = input("Duzenlemek istediginiz kisinin;\nAdi:\n")
+    if contact_name in my_contacts.keys():
+        print(
+            f"{contact_name} adli kisinin numarasi {my_contacts[contact_name]}")
+        choice = input("1️⃣  Adini duzenle\n2️⃣  Numarasini duzenle\n")
+        if choice == "1":
+            new_name = input("Yeni isim:\n")
+            my_contacts[new_name] = my_contacts.pop(contact_name)
+            print(f"{contact_name} adli kisinin adi {new_name} olarak guncellendi.")
+        elif choice == "2":
+            new_number = input("Yeni numara:\n")
+            my_contacts[contact_name] = new_number
+            print(f"{contact_name} adli kisinin numarasi {new_number} olarak degistirildi.")
+        else:
+            print("Yanlis bir deger girdiniz.\nAna menuden tekrar deneyiniz.")
+    else:
+        print(f"{contact_name} adli kisi rehberinizde yok.")
+    
+
+def delete_contact():
+    contact_name = input("Silmek istediginiz kisinin;\nAdi:\n")
+    if contact_name in my_contacts.keys:
+        del my_contacts[contact_name]
+        print(f"{contact_name} basariyla silindi.")
+    else:
+        print(f"{contact_name} zaten rehberinizde kayitli degil.")
+
+
+def search_contact():
+    contact_name = input("Aramak istediginiz kisinin adi:\n")
+    if contact_name in my_contacts.keys():
+        print(
+            f"{contact_name} adli kisinin numarasi {my_contacts[contact_name]}")
+    else:
+        print(f"{contact_name} adli kisi rehberinizde yok.")
+
+
+def all_contacts():
+    print("Rehberinize kayitli kisiler ve numaralari\nIsim, Numara")
+    for i, j in my_contacts.items():
+        print(f"{i},  {j}")
+    print(f"Rehberinizde toplam {len(my_contacts)} kisi kayitli.")
+
+
+my_contacts = {"Ahmet": "0685434568",
+               "Mehmet": "0685521478", "Lisbeth": "0653256545"}
+print("\n☎️   Telefon rehberi uygulamasina hosgeldiniz. ☎️")
+while True:
+    choice = input("""
+ 0️⃣   Cikis
+ 1️⃣   Rehberim
+ 2️⃣   Kisi ekle
+ 3️⃣   Kisileri duzenle
+ 4️⃣   Kisi sil
+ 5️⃣   Kisi ara
+""")
+    if choice == "0":
+        exit()
+    elif choice == "1":
+        all_contacts()
+    elif choice == "2":
+        add_contact()
+    elif choice == "3":
+        edit_contact()
+    elif choice == "4":
+        delete_contact()
+    elif choice == "5":
+        search_contact()
+    else:
+        print(
+            "Gecerli bir giris yapmadiniz.\n 0-1-2-3-4-5 rakamlarindan birine basmalisiniz.")
