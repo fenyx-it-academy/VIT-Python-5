@@ -19,16 +19,17 @@ def edit_contact():
         elif choice == "2":
             new_number = input("Yeni numara:\n")
             my_contacts[contact_name] = new_number
-            print(f"{contact_name} adli kisinin numarasi {new_number} olarak degistirildi.")
+            print(
+                f"{contact_name} adli kisinin numarasi {new_number} olarak degistirildi.")
         else:
             print("Yanlis bir deger girdiniz.\nAna menuden tekrar deneyiniz.")
     else:
         print(f"{contact_name} adli kisi rehberinizde yok.")
-    
+
 
 def delete_contact():
     contact_name = input("Silmek istediginiz kisinin;\nAdi:\n")
-    if contact_name in my_contacts.keys:
+    if contact_name in my_contacts.keys():
         del my_contacts[contact_name]
         print(f"{contact_name} basariyla silindi.")
     else:
