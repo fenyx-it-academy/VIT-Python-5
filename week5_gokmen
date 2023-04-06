@@ -1,0 +1,120 @@
+# Bu program, kullanıcıların telefon rehberlerindeki kişileri yönetmelerine ve aramalarına olanak tanır. Program, Python sözlüklerini kullanarak verileri depolar.
+
+# Özellikler
+
+# Yeni kişi ekleme kisi_ekle()
+# Kişi düzenleme   kisi_duzenle
+# Kişi silme        kisi_sil
+# Kişi arama        kisi_arama
+
+phone_book={}
+def add_register():
+    name = input("Eklenecek ismi giriniz :")
+    phone = input("Eklenecek telefo no :")
+    mail = input("Eklenecek mail : ")
+    phone_book.update ({                 #Bu kısımda içiçe sözlük kullanmayı tercih ettim. Alt dict de detay bolgiler saklanir
+            name:{                          
+                "telefon": phone,
+                "mail" : mail,
+            }
+            })
+    
+    print("Kayit basariyla eklendi..")
+    print(phone_book)
+
+# Kayit eklemek icin fonksiyon 
+def edit_register():
+    name=input("Düzenlenecek kayit ismini giriniz:")
+    if name in phone_book.keys():
+        print(f"{name} üzerinde değişiklik yapılacak")
+        islem=input("1-İsim Güncelle\n2-Telefon Güncelle\n3-Mail güncelle\n\n Ne yapmak isyiyorsun?")
+        if islem == "1":
+            new_name=input("Yeni ismi giriniz...")
+            phone_book[new_name]= phone_book[name]             #eski key e ait tüm bilgiler yeni key e aktarılıyor
+            del phone_book[name]                               #eski key siliniyor
+            print(f"{phone_book[new_name]} seklinde guncellendi")
+        if islem == "2":
+            new_number = input("Yeni numarayı giriniz: ")
+            phone_book[name]["telefon"] = new_number
+    else:
+        print("Böyle bir kayıt yok..")   
+
+# Kayit silmek icin foksiyon             
+def del_register():
+    todelete=input("Silinecek list")
+    if todelete in phone_book:
+        del phone_book[todelete]
+        print(f"{todelete} kaydi silindi ")
+# Kayit aramak icin fonksiyon
+def search_register():
+    search=input("Aranacak kayıt ismini giriniz.")
+    if search in phone_book:
+        print(phone_book[search])
+    else:
+        print  (f"{search} adinda bir kayit bulunamadi.")
+
+while True:
+    islem=input("1-Kayıt Ekle\n2-Kayıt Düzenle\n3-Kayıt Sil\n4-Kayıt Arama\n5-Rehberi Listele\n6-EXIT\n\nYapmak istediğiniz işlem nedir?--")
+
+    if islem=="1":
+        add_register()
+    elif islem=="2":
+        edit_register()
+    elif islem=="3":
+        del_register()
+    elif islem=="4":
+        search_register()
+    elif islem=="5":
+        print(phone_book)
+    elif islem == "6":
+        break
+
+
+
+# Task HACKER RANK
+# The provided code stub reads two integers from STDIN,  and . Add code to print three lines where:
+
+# The first line contains the sum of the two numbers.
+# The second line contains the difference of the two numbers (first - second).
+# The third line contains the product of the two numbers.
+# Example
+
+
+# Print the following:
+# 8
+# -2
+# 15
+if __name__ == '__main__':
+    a = int(input())
+    b = int(input())
+    print(a+b)
+    print(a-b)
+    print(a*b)
+
+# HACKER RANK Given the participants' score sheet for your University Sports Day, you are required to find the runner-up score. You are given  scores. Store them in a list and find the score of the runner-up.
+# The first line contains . The second line contains an array   of  integers each separated by a space.
+# Print the runner-up score.
+# Sample Input 0
+
+# 5
+# 2 3 6 6 5
+# Sample Output 0
+
+# 5
+if __name__ == '__main__':
+    n = int(input())
+    arr = map(int, input().split())
+list2=list(set(arr))
+list2.remove(max(list2))
+print(max(list2))
+
+# HACKER RANK TASK
+# Print the string .
+
+# Input Format
+
+# The first line contains an integer .
+if __name__ == '__main__':
+    n = int(input())
+    for i in range(1,n+1):
+        print(i, end="")
