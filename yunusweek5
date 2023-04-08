@@ -1,0 +1,98 @@
+# Telefon Rehberi Uygulaması
+# Bu program, kullanıcıların telefon rehberlerindeki kişileri yönetmelerine ve aramalarına olanak tanır. 
+# Program, Python sözlüklerini kullanarak verileri depolar.
+
+# Özellikler
+
+# Yeni kişi ekleme
+# Kişi düzenleme
+# Kişi silme
+# Kişi arama
+# Fonksiyonlar
+# Programınız aşağıdaki fonksiyonlardan oluşabilir:
+
+# kişi_ekle()
+# Bu fonksiyon, kullanıcıdan bir kişi adı ve telefon numarası alarak telefon rehberine ekler.
+
+# kişi_düzenle()
+# Bu fonksiyon, kullanıcıdan bir kişi adı alarak telefon rehberindeki kişiler listesinde bu kişiyi bulur. 
+# Ardından, kullanıcıya mevcut verileri güncelleme veya silme seçenekleri sunar.
+
+# kişi_sil()
+# Bu fonksiyon, kullanıcıdan bir kişi adı alarak telefon rehberindeki kişiler listesinde bu kişiyi bulur ve siler.
+
+# kişi_arama()
+# Bu fonksiyon, kullanıcıdan bir kişi adı alarak telefon rehberindeki kişiler listesinde bu kişiyi bulur ve ekrana görüntüler.
+
+rehber={}
+
+def kisi_ekle():
+    isim = input("lutfen kaydetmek istediginiz kisinin ismini giriniz: ")
+    numara = input("lutfen kaydetmek istediginiz kisinin telefon numarasini giriniz: ")
+    rehber[isim] = numara
+    
+    print(f"{isim} adli kisi; {numara} numarasi ile rehbere basariyla kaydedilmistir. ")    
+    
+    
+def kisi_duzenle():
+    isim = input("Yeniden duzenlemek istediginiz kisinin ismini giriniz: ")
+    print(f"{isim}, {rehber[isim]} bilgiler duzenlenecektir. ")
+    
+    del rehber[isim]
+    
+    isim = input("Rehbere eklemek istediginiz yeni ismi giriniz: ")
+    numara = input("Rehbere eklemek istediginiz yeni numarayi giriniz: ")
+    rehber[isim] = numara
+    
+    print(f"{isim}, {numara} basariyla rehberde guncellenmistir.")
+    
+    
+def kisi_sil():
+    isim = input("Lutfen silmek istediginiz ismi giriniz :")
+    
+    if isim in rehber:
+        del rehber[isim]
+        print(f"{isim} basariyla rehberden silinmistir.")
+    
+    else:
+        print(f"{isim}, rehberde bulunamamistir.") 
+    
+    
+def kisi_arama():
+    isim = input("lutfen aramak istediginiz kisinin ismini yaziniz :")
+    
+    if isim in rehber:
+        print(f"Aradiginiz {isim}, adli kisiye ait telefon numarasi: {rehber[isim]}")
+        
+    else:
+        print(f"{isim}, rehberde bulunamamistir.")
+    
+
+while True:
+    print("Telefon Rehberi Uygulaması")
+    print("1 : Kisi Ekleme")
+    print("2 : Kisi Duzenleme")
+    print("3 : Kisi Silme")
+    print("4 : Kisi Arama")
+    print("5 : Cikis")
+    
+    secim = input("lutfen bir secim yapiniz: ")
+    
+    if secim == "1":
+        kisi_ekle()
+    
+    elif secim == "2":
+        kisi_duzenle()
+    
+    elif secim == "3":
+        kisi_sil()
+    
+    elif secim == "4":
+        kisi_arama()
+        
+    elif secim == "5":
+        print("Cikis yapiliyor...")
+        break
+    
+    else:
+        print("Lutfen gecerli bir secim yapiniz!")
